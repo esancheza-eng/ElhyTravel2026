@@ -3,14 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElhyTravel - Tu viaje, nuestra experiencia</title>
+    <meta name="description" content="ElhyTravel - Agencia de viajes profesional en Ecuador">
+    <title>ElhyTravel | Tu viaje, nuestra experiencia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+        body { font-family: 'Inter', system-ui; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/id/1015/1920/1080') center/cover; height: 100vh; }
+    </style>
 </head>
-<body>
-    <h1 class="text-4xl text-blue-600">ElhyTravel 2026</h1>
-    <p>Sitio web con chatbot IA y voz listo.</p>
-    <!-- Full code would go here -->
+<body class="bg-zinc-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-plane text-4xl text-blue-600"></i>
+                <span class="text-3xl font-bold text-blue-600">ElhyTravel</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-lg">
+                <a href="#" class="hover:text-blue-600">Inicio</a>
+                <a href="#" class="hover:text-blue-600">Destinos</a>
+                <a href="#" class="hover:text-blue-600">Visas</a>
+                <a href="#" class="hover:text-blue-600">Servicios</a>
+            </div>
+            <a href="https://wa.me/593989938910" target="_blank" class="bg-green-500 text-white px-6 py-3 rounded-full flex items-center gap-2 font-medium">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero flex items-center text-white">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h1 class="text-6xl md:text-7xl font-bold mb-6 leading-tight" data-aos="fade-up">TU PRÓXIMA AVENTURA<br>COMIENZA AQUÍ</h1>
+            <p class="text-2xl mb-10">Tu viaje, nuestra experiencia</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <button onclick="alert('Cotizar viaje - Próximamente')" class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-10 py-5 rounded-2xl text-xl font-semibold">Cotizar Viaje</button>
+                <button onclick="toggleChatbot()" class="border-2 border-white hover:bg-white hover:text-blue-900 px-10 py-5 rounded-2xl text-xl font-semibold">Hablar con ElhyBot IA</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="hidden fixed bottom-6 right-6 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl w-96 h-[520px] flex flex-col border">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-t-3xl flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-robot text-2xl"></i>
+                <div>ElhyBot IA</div>
+            </div>
+            <button onclick="toggleChatbot()" class="text-2xl leading-none">×</button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-gray-900"></div>
+        <div class="p-4 border-t">
+            <input id="chat-input" type="text" class="w-full border rounded-full px-5 py-4 focus:outline-none" placeholder="Pregunta sobre visas o destinos..." onkeypress="if(event.key==='Enter') sendMessage()">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+        function toggleChatbot() {
+            document.getElementById('chatbot').classList.toggle('hidden');
+        }
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            if (!input.value.trim()) return;
+            alert('ElhyBot: ' + input.value + '\n\n(Respuesta simulada - Conecta OpenAI para IA real)');
+            input.value = '';
+        }
+    </script>
 </body>
 </html>
